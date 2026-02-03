@@ -1,7 +1,6 @@
 package lu.post.eval.domain.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import lu.post.eval.domain.bo.MyIpResponseBO;
 import lu.post.eval.infra.ip.HTTPBinIpClient;
 import org.springframework.scheduling.annotation.Async;
@@ -9,10 +8,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.CompletableFuture;
 
+@Slf4j
 @Service
 public class IpService {
 
-    private static final Logger log = LoggerFactory.getLogger(IpService.class);
+//    private static final Logger log = LoggerFactory.getLogger(IpService.class);
 
     private final HTTPBinIpClient ipClient;
 

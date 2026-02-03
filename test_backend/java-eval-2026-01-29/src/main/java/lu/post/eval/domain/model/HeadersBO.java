@@ -1,27 +1,16 @@
 package lu.post.eval.domain.model;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.lang.NonNull;
 
-import java.util.Objects;
-
+@RequiredArgsConstructor
+@Getter
 public class HeadersBO {
 
     @NonNull
-    private final HeaderName name;
+    private HeaderName name;
 
     @NonNull
-    private final HeaderValue value;
-
-    public HeadersBO(@NonNull HeaderName name, @NonNull HeaderValue value) {
-        this.name = Objects.requireNonNull(name, "name must not be null");
-        this.value = Objects.requireNonNull(value, "value must not be null");
-    }
-
-    public HeaderName getName() {
-        return name;
-    }
-
-    public HeaderValue getValue() {
-        return value;
-    }
+    private HeaderValue value;
 }

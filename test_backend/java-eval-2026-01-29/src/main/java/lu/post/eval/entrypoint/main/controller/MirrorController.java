@@ -1,5 +1,6 @@
 package lu.post.eval.entrypoint.main.controller;
 
+import lombok.RequiredArgsConstructor;
 import lu.post.eval.domain.service.HTTPMirrorCaller;
 import lu.post.eval.entrypoint.main.transformer.ToHeaderOA;
 import lu.post.gen.eval.application.controllers.MirrorControllerApi;
@@ -11,13 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 public class MirrorController implements MirrorControllerApi {
 
     private final HTTPMirrorCaller httpMirrorCaller;
-
-    public MirrorController(HTTPMirrorCaller httpMirrorCaller) {
-        this.httpMirrorCaller = httpMirrorCaller;
-    }
 
     @Override
     public ResponseEntity<List<HeaderOA>> mirrorOutgoingHeaders(

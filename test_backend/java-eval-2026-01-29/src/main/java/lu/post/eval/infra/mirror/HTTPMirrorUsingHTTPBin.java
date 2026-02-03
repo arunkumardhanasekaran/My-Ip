@@ -1,21 +1,17 @@
 package lu.post.eval.infra.mirror;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import lu.post.gen.v6.httpbin.RequestInspectionApi;
 import lu.post.gen.v6.httpbin.model.GetIPResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
+@RequiredArgsConstructor
 public class HTTPMirrorUsingHTTPBin {
 
-    private static final Logger log = LoggerFactory.getLogger(HTTPMirrorUsingHTTPBin.class);
-
     private final RequestInspectionApi requestInspectionApi;
-
-    public HTTPMirrorUsingHTTPBin(RequestInspectionApi requestInspectionApi) {
-        this.requestInspectionApi = requestInspectionApi;
-    }
 
     public String getMyIp() {
         try {

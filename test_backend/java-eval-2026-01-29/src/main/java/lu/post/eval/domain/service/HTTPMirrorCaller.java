@@ -1,22 +1,19 @@
 package lu.post.eval.domain.service;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import lu.post.eval.domain.model.HeadersBO;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
+@Slf4j
 @Service
+@RequiredArgsConstructor
 public class HTTPMirrorCaller {
 
-    private static final Logger log = LoggerFactory.getLogger(HTTPMirrorCaller.class);
-
     private final IHTTMirrorClient mirrorClient;
-
-    public HTTPMirrorCaller(IHTTMirrorClient mirrorClient) {
-        this.mirrorClient = mirrorClient;
-    }
 
     @Async
     public List<HeadersBO> callGet() {

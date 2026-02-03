@@ -1,15 +1,15 @@
 package lu.post.eval.domain.model;
 
-import java.util.Objects;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lu.post.eval.domain.exception.InvalidInputException;
 
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@EqualsAndHashCode(of = "value")
 public class HeaderValue {
 
-    private final String value;
-
-    private HeaderValue(String value) {
-        this.value = value;
-    }
+    public String value;
 
     public static HeaderValue of(String value) {
         validate(value);
@@ -24,23 +24,5 @@ public class HeaderValue {
 
     public String get() {
         return value;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof HeaderValue)) return false;
-        HeaderValue that = (HeaderValue) o;
-        return Objects.equals(get(), that.get());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(get());
-    }
-
-    @Override
-    public String toString() {
-        return get();
     }
 }

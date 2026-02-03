@@ -1,10 +1,8 @@
-// src/main/java/lu/post/eval/entrypoint/main/controller/MyIpController.java
 package lu.post.eval.entrypoint.main.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import lu.post.eval.domain.bo.MyIpResponseBO;
 import lu.post.eval.domain.service.IpService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,13 +13,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-//import java.util.concurrent.InterruptedException;
 
+@Slf4j
 @RestController
 @RequestMapping("/java-eval-api")
 public class MyIpController {
-
-    private static final Logger log = LoggerFactory.getLogger(MyIpController.class);
 
     private final IpService ipService;
 

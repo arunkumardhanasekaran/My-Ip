@@ -1,19 +1,17 @@
 package lu.post.eval.infra.ip;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import lu.post.gen.v6.httpbin.model.GetIPResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import lu.post.gen.v6.httpbin.RequestInspectionApi;
 import reactor.core.publisher.Mono;
 
 import java.util.Map;
 
+@Slf4j
 @Service
 public class HTTPBinIpClient {
-
-    private static final Logger log = LoggerFactory.getLogger(HTTPBinIpClient.class);
 
     private final RequestInspectionApi requestInspectionApi;
     private final ObjectMapper objectMapper;

@@ -11,8 +11,7 @@ public class HTTPMirrorClientImpl implements IHTTMirrorClient {
 
     @Override
     public List<HeadersBO> mirrorMyGetHeaders() {
-        // Minimal implementation to satisfy Spring wiring.
-        // Replace with real HTTP call (RestTemplate, WebClient, Feign, etc.) as needed.
+        // added to satisfy wiring
         return Collections.emptyList();
     }
 }
