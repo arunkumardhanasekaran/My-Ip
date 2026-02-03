@@ -1,0 +1,50 @@
+openapi: 3.0.1
+info:
+  title: httpbin.org
+  description: A simple HTTP Request & Response Service
+  version: "1.0"
+servers:
+  - url: https://httpbin.org/
+tags:
+  - name: HTTP Methods
+    description: Testing different HTTP verbs
+  - name: Request inspection
+    description: Inspect the request data
+paths:
+  /get:
+    get:
+      tags:
+        - HTTP Methods
+      summary: The request's query parameters.
+      responses:
+        "200":
+          description: The request's query parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetResponse'
+  /ip:
+    get:
+      tags:
+        - Request inspection
+      summary: Returns the requester's IP Address.
+      responses:
+        "200":
+          description: The Requester's IP Address.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetIPResponse'
+components:
+  schemas:
+    GetResponse:
+      type: object
+      properties:
+        headers:
+          type: object
+          additionalProperties: true
+    GetIPResponse:
+      type: object
+      properties:
+        origin:
+          type: string

@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "4acce99e-754f-4f32-84cd-5a2546095ace",
+		"name": "java-evaluation-3",
+		"description": "# The java-evaluation collection\n\nThis collection contains the path(s) you backend should implement.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25722634",
+		"_collection_link": "https://lively-escape-921063.postman.co/workspace/90d42723-626d-49a0-9197-69efdf62c13c/collection/25722634-4acce99e-754f-4f32-84cd-5a2546095ace?action=share&source=collection_link&creator=25722634"
+	},
+	"item": [
+		{
+			"name": "Ping",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/java-eval-api/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"java-eval-api",
+						"ping"
+					]
+				},
+				"description": "Check that your backend is up and ready."
+			},
+			"response": []
+		},
+		{
+			"name": "mirror-outgoing-header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/java-eval-api/mirror-outgoing-header",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"java-eval-api",
+						"mirror-outgoing-header"
+					]
+				},
+				"description": "Exemple route, it answers the outgoing HTTTP header when the backend call http://httpbin.org/get"
+			},
+			"response": []
+		},
+		{
+			"name": "my-ip",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check myIp field exis\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('myIp');;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/java-eval-api/my-ip",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"java-eval-api",
+						"my-ip"
+					]
+				},
+				"description": "Answer the outgoing IP of the backend.¨\n\nThis is your work to do during the evaluation."
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,105 @@
+openapi: 3.0.1
+info:
+  title: Java eval API
+  description: Manage API with multiple environment
+  version: "1.0"
+servers:
+  - url: https://$(catalog.host)/java-eval-api
+
+tags:
+  - name: InfoController
+  - name: MirrorController
+  - name: MyIpController  # Add new tag
+
+paths:
+  /java-eval-api/ping:
+    get:
+      operationId: ping
+      summary: Ping api
+      description: Should answer when the path is ready
+      tags:
+        - InfoController
+      responses:
+        204:
+          description: Ping
+          content: { }
+
+  /java-eval-api/mirror-outgoing-header:
+    get:
+      operationId: mirrorOutgoingHeaders
+      summary: Call a HTTP mirror endpoint, to inspect the outgoing header
+      tags:
+        - MirrorController
+      responses:
+        200:
+          description: Outgoing headers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Header'
+        400:
+          description: Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  # Add the new endpoint
+  /java-eval-api/my-ip:
+    get:
+      operationId: getMyIp
+      summary: Get the outgoing IP address of the backend
+      tags:
+        - MyIpController
+      responses:
+        200:
+          description: Successfully retrieved IP address
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MyIpResponse'
+        400:
+          description: Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+    Header:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    # Add new schema for my-ip response
+    MyIpResponse:
+      type: object
+      required:
+        - myIp
+      properties:
+        myIp:
+          type: string
+          description: The outgoing IP address of the backend
+          example: "93.184.216.34"
