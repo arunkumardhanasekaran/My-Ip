@@ -12,8 +12,6 @@ import java.util.concurrent.CompletableFuture;
 @Service
 public class IpService {
 
-//    private static final Logger log = LoggerFactory.getLogger(IpService.class);
-
     private final HTTPBinIpClient ipClient;
 
     public IpService(HTTPBinIpClient ipClient) {
